@@ -1,0 +1,504 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Company Research — InvestIQ</title>
+  <meta name="description" content="Research any public company with AI-powered financial analysis, risk scoring, and market insights." />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@500;600;700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="css/variables.css" />
+  <link rel="stylesheet" href="css/base.css" />
+  <link rel="stylesheet" href="css/dashboard.css" />
+  <link rel="stylesheet" href="css/company-research.css" />
+</head>
+<body>
+
+  <div class="sidebar-backdrop" id="sidebarBackdrop"></div>
+
+  <div class="dashboard-shell">
+
+    <!-- ==========================================================
+         SIDEBAR (same structure as dashboard.html, Company Research active)
+         ========================================================== -->
+    <aside class="sidebar" id="sidebar">
+      <a href="index.html" class="sidebar__logo">
+        <svg width="26" height="26" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <rect x="3" y="16" width="4" height="9" rx="1" fill="currentColor"/>
+          <rect x="12" y="10" width="4" height="15" rx="1" fill="currentColor"/>
+          <rect x="21" y="3" width="4" height="22" rx="1" fill="currentColor"/>
+        </svg>
+        <span class="sidebar__logo-text">InvestIQ</span>
+      </a>
+
+      <nav class="sidebar__group">
+        <span class="sidebar__group-title">Workspace</span>
+        <a href="dashboard.html" class="sidebar__link">
+          <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect x="3" y="3" width="7" height="9" rx="1.5" stroke="currentColor" stroke-width="1.8"/><rect x="14" y="3" width="7" height="5" rx="1.5" stroke="currentColor" stroke-width="1.8"/><rect x="14" y="12" width="7" height="9" rx="1.5" stroke="currentColor" stroke-width="1.8"/><rect x="3" y="16" width="7" height="5" rx="1.5" stroke="currentColor" stroke-width="1.8"/></svg>
+          <span>Dashboard</span>
+        </a>
+        <a href="company-research.html" class="sidebar__link is-active" aria-current="page">
+          <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="11" cy="11" r="7" stroke="currentColor" stroke-width="1.8"/><path d="m20 20-3.5-3.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+          <span>Company Research</span>
+        </a>
+        <a href="#" class="sidebar__link">
+          <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 2 4 5v6c0 5.2 3.4 9 8 11 4.6-2 8-5.8 8-11V5l-8-3Z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><path d="m9 12 2 2 4-4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          <span>AI Analysis</span>
+        </a>
+        <a href="#" class="sidebar__link">
+          <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M7 3h7l5 5v13H7V3Z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><path d="M14 3v5h5M9 13h6M9 17h6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+          <span>Reports</span>
+        </a>
+        <a href="#" class="sidebar__link">
+          <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6 3h12v18l-6-4-6 4V3Z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></svg>
+          <span>Saved Reports</span>
+        </a>
+      </nav>
+
+      <div class="sidebar__spacer"></div>
+
+      <nav class="sidebar__group sidebar__footer">
+        <span class="sidebar__group-title">Account</span>
+        <a href="#" class="sidebar__link">
+          <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="8" r="4" stroke="currentColor" stroke-width="1.8"/><path d="M4 20c1.6-3.8 5-6 8-6s6.4 2.2 8 6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+          <span>Profile</span>
+        </a>
+        <a href="#" class="sidebar__link">
+          <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="12" r="3" stroke="currentColor" stroke-width="1.8"/><path d="M19 12a7 7 0 0 0-.1-1.2l2-1.6-2-3.4-2.4.9a7 7 0 0 0-2-1.2L14 3h-4l-.5 2.5a7 7 0 0 0-2 1.2l-2.4-.9-2 3.4 2 1.6a7 7 0 0 0 0 2.4l-2 1.6 2 3.4 2.4-.9a7 7 0 0 0 2 1.2L10 21h4l.5-2.5a7 7 0 0 0 2-1.2l2.4.9 2-3.4-2-1.6c.07-.4.1-.8.1-1.2Z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/></svg>
+          <span>Settings</span>
+        </a>
+        <a href="#" class="sidebar__link">
+          <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="1.8"/><path d="M9.5 9a2.5 2.5 0 0 1 4.9.8c0 1.7-2.4 1.7-2.4 3.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/><circle cx="12" cy="16.5" r="0.9" fill="currentColor"/></svg>
+          <span>Help</span>
+        </a>
+        <a href="index.html" class="sidebar__link sidebar__link--logout">
+          <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/><path d="M16 17l5-5-5-5M21 12H9" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          <span>Logout</span>
+        </a>
+      </nav>
+    </aside>
+
+    <!-- ==========================================================
+         CONTENT COLUMN
+         ========================================================== -->
+    <div class="dashboard-content">
+
+      <!-- TOPBAR (same structure as dashboard.html) -->
+      <header class="topbar">
+        <button class="topbar__toggle" id="sidebarToggle" aria-label="Toggle sidebar" aria-expanded="false">
+          <svg viewBox="0 0 24 24" fill="none" aria-hidden="true" width="20" height="20"><path d="M4 6h16M4 12h16M4 18h16" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+        </button>
+
+        <div class="topbar__search">
+          <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="11" cy="11" r="7" stroke="currentColor" stroke-width="1.8"/><path d="m20 20-3.5-3.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+          <input type="search" placeholder="Search companies, reports, tickers..." aria-label="Search" />
+        </div>
+
+        <div class="topbar__spacer"></div>
+
+        <span class="topbar__date" id="topbarDate"></span>
+
+        <div class="topbar__actions">
+          <div class="dropdown" data-dropdown>
+            <button class="topbar__icon-btn" data-dropdown-trigger aria-label="Notifications" aria-expanded="false" aria-haspopup="true">
+              <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6 8a6 6 0 1 1 12 0c0 4 1.5 5.5 2 6H4c.5-.5 2-2 2-6Z" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/><path d="M10 20a2 2 0 0 0 4 0" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg>
+              <span class="topbar__badge" aria-hidden="true"></span>
+            </button>
+            <div class="dropdown__panel" role="menu">
+              <div class="dropdown__header">
+                Notifications
+                <a href="#">Mark all read</a>
+              </div>
+              <div class="notification-item">
+                <span class="notification-item__dot"></span>
+                <div>
+                  <div class="notification-item__title">Risk score updated for NVIDIA Corp.</div>
+                  <div class="notification-item__time">12 minutes ago</div>
+                </div>
+              </div>
+              <div class="notification-item">
+                <span class="notification-item__dot"></span>
+                <div>
+                  <div class="notification-item__title">Your Tesla Inc. report is ready to view.</div>
+                  <div class="notification-item__time">1 hour ago</div>
+                </div>
+              </div>
+              <div class="notification-item">
+                <span class="notification-item__dot"></span>
+                <div>
+                  <div class="notification-item__title">Weekly market summary is available.</div>
+                  <div class="notification-item__time">Yesterday</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="dropdown" data-dropdown>
+            <button class="user-trigger" data-dropdown-trigger aria-label="Account menu" aria-expanded="false" aria-haspopup="true">
+              <span class="user-avatar">AS</span>
+              <span class="user-trigger__name">Aditi Sharma</span>
+              <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="m6 9 6 6 6-6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </button>
+            <div class="dropdown__panel user-menu" role="menu">
+              <div class="user-menu__identity">
+                <span class="user-avatar">AS</span>
+                <div>
+                  <div class="user-menu__identity-name">Aditi Sharma</div>
+                  <div class="user-menu__identity-email">aditi.sharma@investiq.com</div>
+                </div>
+              </div>
+              <a href="#" class="dropdown-link">
+                <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="8" r="4" stroke="currentColor" stroke-width="1.8"/><path d="M4 20c1.6-3.8 5-6 8-6s6.4 2.2 8 6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+                Profile
+              </a>
+              <a href="#" class="dropdown-link">
+                <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="12" r="3" stroke="currentColor" stroke-width="1.8"/><path d="M19 12a7 7 0 0 0-.1-1.2l2-1.6-2-3.4-2.4.9a7 7 0 0 0-2-1.2L14 3h-4l-.5 2.5a7 7 0 0 0-2 1.2l-2.4-.9-2 3.4 2 1.6a7 7 0 0 0 0 2.4l-2 1.6 2 3.4 2.4-.9a7 7 0 0 0 2 1.2L10 21h4l.5-2.5a7 7 0 0 0 2-1.2l2.4.9 2-3.4-2-1.6c.07-.4.1-.8.1-1.2Z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/></svg>
+                Settings
+              </a>
+              <div class="dropdown-divider"></div>
+              <a href="index.html" class="dropdown-link dropdown-link--danger">
+                <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/><path d="M16 17l5-5-5-5M21 12H9" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                Logout
+              </a>
+            </div>
+          </div>
+        </div>
+      </header>
+
+      <!-- BODY -->
+      <div class="dashboard-body dashboard-body--single">
+        <main class="dashboard-main">
+
+          <!-- PAGE HEADER -->
+          <section class="welcome">
+            <div>
+              <h1 class="welcome__title">Company Research</h1>
+              <p class="welcome__subtitle">Search any public company to pull up AI-analyzed financials, risk, and market context.</p>
+            </div>
+          </section>
+
+          <!-- SEARCH BAR -->
+          <section class="panel research-search" aria-label="Company search">
+            <form class="research-search__form" id="companySearchForm">
+              <div class="research-search__field">
+                <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="11" cy="11" r="7" stroke="currentColor" stroke-width="1.8"/><path d="m20 20-3.5-3.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+                <input type="text" id="companySearchInput" placeholder="Search by company name or ticker — e.g. Apple, AAPL" aria-label="Search by company name or stock ticker" />
+                <button type="button" class="research-search__voice" id="voiceSearchBtn" aria-label="Search by voice">
+                  <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect x="9" y="2" width="6" height="12" rx="3" stroke="currentColor" stroke-width="1.8"/><path d="M5 11a7 7 0 0 0 14 0M12 18v3" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+                </button>
+              </div>
+              <button type="submit" class="btn btn-primary research-search__submit">
+                <span class="btn-label">Search</span>
+              </button>
+            </form>
+          </section>
+
+          <!-- POPULAR COMPANIES -->
+          <section aria-label="Popular companies">
+            <div class="panel__head panel__head--loose">
+              <h2 class="panel__title">Popular Companies</h2>
+            </div>
+            <div class="search-chips">
+              <button class="search-chip" data-company="Apple"><span class="search-chip__logo">AP</span><span class="search-chip__name">Apple</span></button>
+              <button class="search-chip" data-company="Microsoft"><span class="search-chip__logo">MS</span><span class="search-chip__name">Microsoft</span></button>
+              <button class="search-chip" data-company="Google"><span class="search-chip__logo">GO</span><span class="search-chip__name">Google</span></button>
+              <button class="search-chip" data-company="Amazon"><span class="search-chip__logo">AM</span><span class="search-chip__name">Amazon</span></button>
+              <button class="search-chip" data-company="Tesla"><span class="search-chip__logo">TS</span><span class="search-chip__name">Tesla</span></button>
+              <button class="search-chip" data-company="NVIDIA"><span class="search-chip__logo">NV</span><span class="search-chip__name">NVIDIA</span></button>
+            </div>
+          </section>
+
+          <!-- COMPANY OVERVIEW -->
+          <section class="panel company-overview" aria-label="Company overview" data-skeleton>
+            <div class="company-overview__top">
+              <div class="company-overview__identity">
+                <div class="company-overview__logo">AP</div>
+                <div>
+                  <h2 class="company-overview__name">Apple Inc.</h2>
+                  <span class="company-overview__ticker">NASDAQ: AAPL</span>
+                </div>
+              </div>
+              <span class="badge badge--low">Low Risk</span>
+            </div>
+
+            <div class="company-overview__grid">
+              <div class="company-overview__item">
+                <span class="company-overview__label">Industry</span>
+                <span class="company-overview__value">Consumer Technology</span>
+              </div>
+              <div class="company-overview__item">
+                <span class="company-overview__label">CEO</span>
+                <span class="company-overview__value">Tim Cook</span>
+              </div>
+              <div class="company-overview__item">
+                <span class="company-overview__label">Headquarters</span>
+                <span class="company-overview__value">Cupertino, California</span>
+              </div>
+              <div class="company-overview__item">
+                <span class="company-overview__label">Market Cap</span>
+                <span class="company-overview__value">$2.94T</span>
+              </div>
+              <div class="company-overview__item">
+                <span class="company-overview__label">Current Price</span>
+                <span class="company-overview__value">$192.35</span>
+              </div>
+              <div class="company-overview__item">
+                <span class="company-overview__label">52-Week High</span>
+                <span class="company-overview__value">$212.80</span>
+              </div>
+              <div class="company-overview__item">
+                <span class="company-overview__label">52-Week Low</span>
+                <span class="company-overview__value">$164.10</span>
+              </div>
+            </div>
+          </section>
+
+          <!-- FINANCIAL SUMMARY -->
+          <section aria-label="Financial summary">
+            <div class="panel__head panel__head--loose">
+              <h2 class="panel__title">Financial Summary</h2>
+            </div>
+            <div class="stat-cards financial-summary">
+              <div class="stat-card">
+                <div class="stat-card__top">
+                  <span class="stat-card__icon stat-card__icon--blue">
+                    <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 19V5m6 14V9m6 10V3" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                  </span>
+                </div>
+                <div class="stat-card__value" data-target="383" data-prefix="$" data-suffix="B">0</div>
+                <div class="stat-card__label">Revenue (TTM)</div>
+              </div>
+
+              <div class="stat-card">
+                <div class="stat-card__top">
+                  <span class="stat-card__icon stat-card__icon--green">
+                    <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M3 17 9 11l4 4 8-8" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/><path d="M15 5h6v6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                  </span>
+                </div>
+                <div class="stat-card__value" data-target="97" data-prefix="$" data-suffix="B">0</div>
+                <div class="stat-card__label">Net Profit</div>
+              </div>
+
+              <div class="stat-card">
+                <div class="stat-card__top">
+                  <span class="stat-card__icon stat-card__icon--blue">
+                    <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 2 4 5v6c0 5.2 3.4 9 8 11 4.6-2 8-5.8 8-11V5l-8-3Z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></svg>
+                  </span>
+                </div>
+                <div class="stat-card__value" data-target="6" data-suffix=".13">0</div>
+                <div class="stat-card__label">EPS</div>
+              </div>
+
+              <div class="stat-card">
+                <div class="stat-card__top">
+                  <span class="stat-card__icon stat-card__icon--amber">
+                    <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect x="3" y="4" width="8" height="16" rx="1" stroke="currentColor" stroke-width="1.8"/><rect x="13" y="4" width="8" height="16" rx="1" stroke="currentColor" stroke-width="1.8"/></svg>
+                  </span>
+                </div>
+                <div class="stat-card__value" data-target="31" data-suffix=".4x">0</div>
+                <div class="stat-card__label">PE Ratio</div>
+              </div>
+
+              <div class="stat-card">
+                <div class="stat-card__top">
+                  <span class="stat-card__icon stat-card__icon--red">
+                    <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 2 3 6v6c0 5 4 8.5 9 10 5-1.5 9-5 9-10V6l-9-4Z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></svg>
+                  </span>
+                </div>
+                <div class="stat-card__value" data-target="1" data-suffix=".47">0</div>
+                <div class="stat-card__label">Debt to Equity</div>
+              </div>
+
+              <div class="stat-card">
+                <div class="stat-card__top">
+                  <span class="stat-card__icon stat-card__icon--green">
+                    <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M3 17 9 11l4 4 8-8" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                  </span>
+                </div>
+                <div class="stat-card__value" data-target="147" data-suffix="%">0</div>
+                <div class="stat-card__label">ROE</div>
+              </div>
+            </div>
+          </section>
+
+          <!-- AI INSIGHT PANEL -->
+          <section class="panel ai-insight-panel" aria-label="AI insights" data-skeleton>
+            <div class="panel__head">
+              <h2 class="panel__title">AI Insight Panel</h2>
+              <span class="eyebrow">
+                <svg width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true"><circle cx="6" cy="6" r="6" fill="currentColor"/></svg>
+                AI Generated
+              </span>
+            </div>
+
+            <div class="ai-insight-grid">
+              <div class="ai-insight-row">
+                <span class="ai-insight-row__label">Overall Financial Health</span>
+                <span class="badge badge--low">Excellent</span>
+              </div>
+              <div class="ai-insight-row">
+                <span class="ai-insight-row__label">Growth Potential</span>
+                <span class="badge badge--completed">High</span>
+              </div>
+              <div class="ai-insight-row">
+                <span class="ai-insight-row__label">Risk Level</span>
+                <span class="badge badge--low">Low</span>
+              </div>
+              <div class="ai-insight-row">
+                <span class="ai-insight-row__label">AI Recommendation</span>
+                <span class="badge badge--low">Strong Buy</span>
+              </div>
+            </div>
+
+            <div class="confidence-meter">
+              <div class="confidence-meter__head">
+                <span class="confidence-meter__label">AI Confidence Score</span>
+                <span class="confidence-meter__value" id="confidenceValue">0%</span>
+              </div>
+              <div class="confidence-meter__track">
+                <div class="confidence-meter__fill" id="confidenceFill" style="--confidence-target: 91%;"></div>
+              </div>
+            </div>
+          </section>
+
+          <!-- CHARTS -->
+          <section class="charts-grid charts-grid--triple" aria-label="Company charts">
+            <div class="panel" data-skeleton>
+              <div class="panel__head">
+                <h2 class="panel__title">Stock Price Trend</h2>
+                <a href="#" class="panel__link">1Y</a>
+              </div>
+              <div class="chart-card__figure">
+                <svg viewBox="0 0 400 160" preserveAspectRatio="none" aria-hidden="true">
+                  <path class="chart-fill" d="M0,110 C50,100 90,120 140,100 C190,80 220,95 270,60 C320,25 350,50 400,15 L400,160 L0,160 Z" fill="url(#priceGrad)"/>
+                  <path class="chart-line chart-line--primary" d="M0,110 C50,100 90,120 140,100 C190,80 220,95 270,60 C320,25 350,50 400,15" />
+                  <defs>
+                    <linearGradient id="priceGrad" x1="0" y1="0" x2="0" y2="1">
+                      <stop offset="0%" stop-color="#2563EB" stop-opacity="0.22"/>
+                      <stop offset="100%" stop-color="#2563EB" stop-opacity="0"/>
+                    </linearGradient>
+                  </defs>
+                </svg>
+              </div>
+              <div class="chart-card__legend">
+                <span><i style="background:var(--color-primary)"></i> AAPL Price (USD)</span>
+              </div>
+            </div>
+
+            <div class="panel" data-skeleton>
+              <div class="panel__head">
+                <h2 class="panel__title">Revenue Growth</h2>
+                <a href="#" class="panel__link">5Y</a>
+              </div>
+              <div class="chart-card__figure">
+                <svg viewBox="0 0 400 160" preserveAspectRatio="none" aria-hidden="true">
+                  <path class="chart-fill" d="M0,140 C60,130 90,100 140,105 C190,110 220,70 270,65 C320,60 350,80 400,30 L400,160 L0,160 Z" fill="url(#revGrowthGrad)"/>
+                  <path class="chart-line chart-line--success" d="M0,140 C60,130 90,100 140,105 C190,110 220,70 270,65 C320,60 350,80 400,30" />
+                  <defs>
+                    <linearGradient id="revGrowthGrad" x1="0" y1="0" x2="0" y2="1">
+                      <stop offset="0%" stop-color="#22C55E" stop-opacity="0.2"/>
+                      <stop offset="100%" stop-color="#22C55E" stop-opacity="0"/>
+                    </linearGradient>
+                  </defs>
+                </svg>
+              </div>
+              <div class="chart-card__legend">
+                <span><i style="background:var(--color-success)"></i> Annual Revenue</span>
+              </div>
+            </div>
+
+            <div class="panel" data-skeleton>
+              <div class="panel__head">
+                <h2 class="panel__title">Profit Trend</h2>
+                <a href="#" class="panel__link">5Y</a>
+              </div>
+              <div class="chart-card__figure">
+                <svg viewBox="0 0 400 160" preserveAspectRatio="none" aria-hidden="true">
+                  <path class="chart-fill" d="M0,120 C50,125 90,90 140,95 C190,100 220,60 270,70 C320,80 350,40 400,50 L400,160 L0,160 Z" fill="url(#profitGrad)"/>
+                  <path class="chart-line chart-line--primary" d="M0,120 C50,125 90,90 140,95 C190,100 220,60 270,70 C320,80 350,40 400,50" />
+                  <defs>
+                    <linearGradient id="profitGrad" x1="0" y1="0" x2="0" y2="1">
+                      <stop offset="0%" stop-color="#2563EB" stop-opacity="0.18"/>
+                      <stop offset="100%" stop-color="#2563EB" stop-opacity="0"/>
+                    </linearGradient>
+                  </defs>
+                </svg>
+              </div>
+              <div class="chart-card__legend">
+                <span><i style="background:var(--color-primary)"></i> Net Profit</span>
+              </div>
+            </div>
+          </section>
+
+          <!-- RECENT NEWS -->
+          <section aria-label="Recent news">
+            <div class="panel__head panel__head--loose">
+              <h2 class="panel__title">Recent News</h2>
+              <a href="#" class="panel__link">View all</a>
+            </div>
+            <div class="news-card-grid">
+              <article class="news-card">
+                <div class="news-card__thumb" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" fill="none"><path d="M3 17 9 11l4 4 8-8" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                </div>
+                <div class="news-card__body">
+                  <span class="news-card__tag">Earnings</span>
+                  <h3 class="news-card__title">Apple beats Q3 estimates on strong Services growth.</h3>
+                  <div class="news-item__meta"><i></i> Reuters · 3h ago</div>
+                </div>
+              </article>
+              <article class="news-card">
+                <div class="news-card__thumb" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" fill="none"><rect x="3" y="4" width="18" height="17" rx="2" stroke="currentColor" stroke-width="1.7"/><path d="M3 9h18M8 3v3M16 3v3" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg>
+                </div>
+                <div class="news-card__body">
+                  <span class="news-card__tag">Product</span>
+                  <h3 class="news-card__title">New product launch event scheduled for September.</h3>
+                  <div class="news-item__meta"><i class="is-neutral"></i> Bloomberg · 8h ago</div>
+                </div>
+              </article>
+              <article class="news-card">
+                <div class="news-card__thumb" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" fill="none"><path d="M12 2 4 5v6c0 5.2 3.4 9 8 11 4.6-2 8-5.8 8-11V5l-8-3Z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></svg>
+                </div>
+                <div class="news-card__body">
+                  <span class="news-card__tag">Regulatory</span>
+                  <h3 class="news-card__title">EU regulators open review into App Store policies.</h3>
+                  <div class="news-item__meta"><i class="is-negative"></i> Financial Times · 1d ago</div>
+                </div>
+              </article>
+            </div>
+          </section>
+
+          <!-- ACTION BUTTONS -->
+          <section class="research-actions" aria-label="Research actions">
+            <button type="button" class="btn btn-primary" data-action="generate-report">
+              <svg viewBox="0 0 24 24" fill="none" aria-hidden="true" width="18" height="18"><path d="M12 2 4 5v6c0 5.2 3.4 9 8 11 4.6-2 8-5.8 8-11V5l-8-3Z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></svg>
+              <span class="btn-label">Generate AI Report</span>
+            </button>
+            <button type="button" class="btn btn-ghost" data-action="compare-company">
+              <svg viewBox="0 0 24 24" fill="none" aria-hidden="true" width="18" height="18"><rect x="3" y="4" width="8" height="16" rx="1" stroke="currentColor" stroke-width="1.8"/><rect x="13" y="4" width="8" height="16" rx="1" stroke="currentColor" stroke-width="1.8"/></svg>
+              <span class="btn-label">Compare Company</span>
+            </button>
+            <button type="button" class="btn btn-ghost" data-action="save-research">
+              <svg viewBox="0 0 24 24" fill="none" aria-hidden="true" width="18" height="18"><path d="M6 3h12v18l-6-4-6 4V3Z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></svg>
+              <span class="btn-label">Save Research</span>
+            </button>
+            <button type="button" class="btn btn-ghost" data-action="export-pdf">
+              <svg viewBox="0 0 24 24" fill="none" aria-hidden="true" width="18" height="18"><path d="M7 3h7l5 5v13H7V3Z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><path d="M14 3v5h5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+              <span class="btn-label">Export PDF</span>
+            </button>
+          </section>
+
+        </main>
+      </div>
+    </div>
+  </div>
+
+  <script src="js/dashboard.js" defer></script>
+  <script src="js/company-research.js" defer></script>
+</body>
+</html>
