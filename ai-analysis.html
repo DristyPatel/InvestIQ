@@ -1,0 +1,518 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AI Analysis — InvestIQ</title>
+  <meta name="description" content="AI-generated investment analysis, recommendation, SWOT, and multi-year predictions for a company." />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@500;600;700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="css/variables.css" />
+  <link rel="stylesheet" href="css/base.css" />
+  <link rel="stylesheet" href="css/dashboard.css" />
+  <link rel="stylesheet" href="css/company-research.css" />
+  <link rel="stylesheet" href="css/ai-analysis.css" />
+</head>
+<body>
+
+  <div class="sidebar-backdrop" id="sidebarBackdrop"></div>
+
+  <div class="dashboard-shell">
+
+    <!-- ==========================================================
+         SIDEBAR (same structure as dashboard.html, AI Analysis active)
+         ========================================================== -->
+    <aside class="sidebar" id="sidebar">
+      <a href="index.html" class="sidebar__logo">
+        <svg width="26" height="26" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <rect x="3" y="16" width="4" height="9" rx="1" fill="currentColor"/>
+          <rect x="12" y="10" width="4" height="15" rx="1" fill="currentColor"/>
+          <rect x="21" y="3" width="4" height="22" rx="1" fill="currentColor"/>
+        </svg>
+        <span class="sidebar__logo-text">InvestIQ</span>
+      </a>
+
+      <nav class="sidebar__group">
+        <span class="sidebar__group-title">Workspace</span>
+        <a href="dashboard.html" class="sidebar__link">
+          <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect x="3" y="3" width="7" height="9" rx="1.5" stroke="currentColor" stroke-width="1.8"/><rect x="14" y="3" width="7" height="5" rx="1.5" stroke="currentColor" stroke-width="1.8"/><rect x="14" y="12" width="7" height="9" rx="1.5" stroke="currentColor" stroke-width="1.8"/><rect x="3" y="16" width="7" height="5" rx="1.5" stroke="currentColor" stroke-width="1.8"/></svg>
+          <span>Dashboard</span>
+        </a>
+        <a href="company-research.html" class="sidebar__link">
+          <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="11" cy="11" r="7" stroke="currentColor" stroke-width="1.8"/><path d="m20 20-3.5-3.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+          <span>Company Research</span>
+        </a>
+        <a href="ai-analysis.html" class="sidebar__link is-active" aria-current="page">
+          <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 2 4 5v6c0 5.2 3.4 9 8 11 4.6-2 8-5.8 8-11V5l-8-3Z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><path d="m9 12 2 2 4-4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          <span>AI Analysis</span>
+        </a>
+        <a href="#" class="sidebar__link">
+          <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M7 3h7l5 5v13H7V3Z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><path d="M14 3v5h5M9 13h6M9 17h6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+          <span>Reports</span>
+        </a>
+        <a href="#" class="sidebar__link">
+          <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6 3h12v18l-6-4-6 4V3Z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></svg>
+          <span>Saved Reports</span>
+        </a>
+      </nav>
+
+      <div class="sidebar__spacer"></div>
+
+      <nav class="sidebar__group sidebar__footer">
+        <span class="sidebar__group-title">Account</span>
+        <a href="#" class="sidebar__link">
+          <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="8" r="4" stroke="currentColor" stroke-width="1.8"/><path d="M4 20c1.6-3.8 5-6 8-6s6.4 2.2 8 6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+          <span>Profile</span>
+        </a>
+        <a href="#" class="sidebar__link">
+          <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="12" r="3" stroke="currentColor" stroke-width="1.8"/><path d="M19 12a7 7 0 0 0-.1-1.2l2-1.6-2-3.4-2.4.9a7 7 0 0 0-2-1.2L14 3h-4l-.5 2.5a7 7 0 0 0-2 1.2l-2.4-.9-2 3.4 2 1.6a7 7 0 0 0 0 2.4l-2 1.6 2 3.4 2.4-.9a7 7 0 0 0 2 1.2L10 21h4l.5-2.5a7 7 0 0 0 2-1.2l2.4.9 2-3.4-2-1.6c.07-.4.1-.8.1-1.2Z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/></svg>
+          <span>Settings</span>
+        </a>
+        <a href="#" class="sidebar__link">
+          <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="1.8"/><path d="M9.5 9a2.5 2.5 0 0 1 4.9.8c0 1.7-2.4 1.7-2.4 3.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/><circle cx="12" cy="16.5" r="0.9" fill="currentColor"/></svg>
+          <span>Help</span>
+        </a>
+        <a href="index.html" class="sidebar__link sidebar__link--logout">
+          <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/><path d="M16 17l5-5-5-5M21 12H9" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          <span>Logout</span>
+        </a>
+      </nav>
+    </aside>
+
+    <!-- ==========================================================
+         CONTENT COLUMN
+         ========================================================== -->
+    <div class="dashboard-content">
+
+      <!-- TOPBAR (same structure as dashboard.html) -->
+      <header class="topbar">
+        <button class="topbar__toggle" id="sidebarToggle" aria-label="Toggle sidebar" aria-expanded="false">
+          <svg viewBox="0 0 24 24" fill="none" aria-hidden="true" width="20" height="20"><path d="M4 6h16M4 12h16M4 18h16" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+        </button>
+
+        <div class="topbar__search">
+          <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="11" cy="11" r="7" stroke="currentColor" stroke-width="1.8"/><path d="m20 20-3.5-3.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+          <input type="search" placeholder="Search companies, reports, tickers..." aria-label="Search" />
+        </div>
+
+        <div class="topbar__spacer"></div>
+
+        <span class="topbar__date" id="topbarDate"></span>
+
+        <div class="topbar__actions">
+          <div class="dropdown" data-dropdown>
+            <button class="topbar__icon-btn" data-dropdown-trigger aria-label="Notifications" aria-expanded="false" aria-haspopup="true">
+              <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6 8a6 6 0 1 1 12 0c0 4 1.5 5.5 2 6H4c.5-.5 2-2 2-6Z" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/><path d="M10 20a2 2 0 0 0 4 0" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg>
+              <span class="topbar__badge" aria-hidden="true"></span>
+            </button>
+            <div class="dropdown__panel" role="menu">
+              <div class="dropdown__header">
+                Notifications
+                <a href="#">Mark all read</a>
+              </div>
+              <div class="notification-item">
+                <span class="notification-item__dot"></span>
+                <div>
+                  <div class="notification-item__title">AI analysis complete for NVIDIA Corp.</div>
+                  <div class="notification-item__time">12 minutes ago</div>
+                </div>
+              </div>
+              <div class="notification-item">
+                <span class="notification-item__dot"></span>
+                <div>
+                  <div class="notification-item__title">Your Tesla Inc. report is ready to view.</div>
+                  <div class="notification-item__time">1 hour ago</div>
+                </div>
+              </div>
+              <div class="notification-item">
+                <span class="notification-item__dot"></span>
+                <div>
+                  <div class="notification-item__title">Weekly market summary is available.</div>
+                  <div class="notification-item__time">Yesterday</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="dropdown" data-dropdown>
+            <button class="user-trigger" data-dropdown-trigger aria-label="Account menu" aria-expanded="false" aria-haspopup="true">
+              <span class="user-avatar">AS</span>
+              <span class="user-trigger__name">Aditi Sharma</span>
+              <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="m6 9 6 6 6-6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </button>
+            <div class="dropdown__panel user-menu" role="menu">
+              <div class="user-menu__identity">
+                <span class="user-avatar">AS</span>
+                <div>
+                  <div class="user-menu__identity-name">Aditi Sharma</div>
+                  <div class="user-menu__identity-email">aditi.sharma@investiq.com</div>
+                </div>
+              </div>
+              <a href="#" class="dropdown-link">
+                <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="8" r="4" stroke="currentColor" stroke-width="1.8"/><path d="M4 20c1.6-3.8 5-6 8-6s6.4 2.2 8 6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+                Profile
+              </a>
+              <a href="#" class="dropdown-link">
+                <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="12" r="3" stroke="currentColor" stroke-width="1.8"/><path d="M19 12a7 7 0 0 0-.1-1.2l2-1.6-2-3.4-2.4.9a7 7 0 0 0-2-1.2L14 3h-4l-.5 2.5a7 7 0 0 0-2 1.2l-2.4-.9-2 3.4 2 1.6a7 7 0 0 0 0 2.4l-2 1.6 2 3.4 2.4-.9a7 7 0 0 0 2 1.2L10 21h4l.5-2.5a7 7 0 0 0 2-1.2l2.4.9 2-3.4-2-1.6c.07-.4.1-.8.1-1.2Z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/></svg>
+                Settings
+              </a>
+              <div class="dropdown-divider"></div>
+              <a href="index.html" class="dropdown-link dropdown-link--danger">
+                <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/><path d="M16 17l5-5-5-5M21 12H9" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                Logout
+              </a>
+            </div>
+          </div>
+        </div>
+      </header>
+
+      <!-- BODY -->
+      <div class="dashboard-body dashboard-body--single">
+        <main class="dashboard-main">
+
+          <!-- ==========================================================
+               1. HEADER
+               ========================================================== -->
+          <section class="panel ai-header" aria-label="Analysis header" data-skeleton>
+            <div class="ai-header__identity">
+              <div class="company-overview__logo">NV</div>
+              <div>
+                <h1 class="ai-header__name">NVIDIA Corp.</h1>
+                <span class="company-overview__ticker">NASDAQ: NVDA</span>
+              </div>
+            </div>
+
+            <div class="ai-header__meta">
+              <div class="ai-header__meta-item">
+                <span class="company-overview__label">Analysis Status</span>
+                <span class="badge badge--completed">
+                  <svg viewBox="0 0 24 24" fill="none" aria-hidden="true" width="12" height="12"><circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="1.8"/><path d="m8 12 3 3 5-6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                  Complete
+                </span>
+              </div>
+              <div class="ai-header__meta-item">
+                <span class="company-overview__label">AI Confidence</span>
+                <span class="ai-header__confidence">95%</span>
+              </div>
+              <button type="button" class="btn btn-primary" data-action="generate-report">
+                <svg viewBox="0 0 24 24" fill="none" aria-hidden="true" width="18" height="18"><path d="M12 2 4 5v6c0 5.2 3.4 9 8 11 4.6-2 8-5.8 8-11V5l-8-3Z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></svg>
+                <span class="btn-label">Generate Report</span>
+              </button>
+            </div>
+          </section>
+
+          <!-- ==========================================================
+               2. OVERALL AI SCORE
+               ========================================================== -->
+          <section class="panel ai-score" aria-label="Overall AI score" data-skeleton>
+            <div class="ai-score__main">
+              <div class="ai-score__circle">
+                <svg viewBox="0 0 120 120" aria-hidden="true">
+                  <circle cx="60" cy="60" r="50" fill="none" stroke="var(--color-border)" stroke-width="10"/>
+                  <circle class="gauge-arc" style="--gauge-offset:24;" cx="60" cy="60" r="50" stroke="var(--color-primary)" pathLength="314" stroke-dasharray="314" transform="rotate(-90 60 60)"/>
+                </svg>
+                <div class="ai-score__circle-label">
+                  <span class="ai-score__number">92</span>
+                  <span class="ai-score__out-of">/ 100</span>
+                </div>
+              </div>
+              <div>
+                <h2 class="panel__title">Overall AI Score</h2>
+                <p class="ai-score__summary">NVIDIA scores in the top percentile across financial health and growth potential, with low near-term risk.</p>
+              </div>
+            </div>
+
+            <div class="ai-insight-grid ai-score__breakdown">
+              <div class="ai-insight-row">
+                <span class="ai-insight-row__label">Financial Health</span>
+                <span class="badge badge--low">Excellent</span>
+              </div>
+              <div class="ai-insight-row">
+                <span class="ai-insight-row__label">Growth Potential</span>
+                <span class="badge badge--completed">Very High</span>
+              </div>
+              <div class="ai-insight-row">
+                <span class="ai-insight-row__label">Risk Level</span>
+                <span class="badge badge--low">Low</span>
+              </div>
+              <div class="ai-insight-row">
+                <span class="ai-insight-row__label">Valuation</span>
+                <span class="badge badge--medium">Rich</span>
+              </div>
+            </div>
+          </section>
+
+          <!-- ==========================================================
+               3. FINANCIAL ANALYSIS CARDS
+               ========================================================== -->
+          <section aria-label="Financial analysis">
+            <div class="panel__head panel__head--loose">
+              <h2 class="panel__title">Financial Analysis</h2>
+            </div>
+            <div class="stat-cards financial-summary">
+              <div class="stat-card">
+                <div class="stat-card__top">
+                  <span class="stat-card__icon stat-card__icon--blue">
+                    <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 19V5m6 14V9m6 10V3" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                  </span>
+                  <span class="stat-card__trend stat-card__trend--up">
+                    <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6 18 18 6M9 6h9v9" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                    22%
+                  </span>
+                </div>
+                <div class="stat-card__value" data-target="96" data-prefix="$" data-suffix="B">0</div>
+                <div class="stat-card__label">Revenue</div>
+              </div>
+
+              <div class="stat-card">
+                <div class="stat-card__top">
+                  <span class="stat-card__icon stat-card__icon--green">
+                    <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M3 17 9 11l4 4 8-8" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/><path d="M15 5h6v6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                  </span>
+                  <span class="stat-card__trend stat-card__trend--up">
+                    <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6 18 18 6M9 6h9v9" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                    31%
+                  </span>
+                </div>
+                <div class="stat-card__value" data-target="45" data-prefix="$" data-suffix="B">0</div>
+                <div class="stat-card__label">Profit</div>
+              </div>
+
+              <div class="stat-card">
+                <div class="stat-card__top">
+                  <span class="stat-card__icon stat-card__icon--blue">
+                    <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 2 4 5v6c0 5.2 3.4 9 8 11 4.6-2 8-5.8 8-11V5l-8-3Z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></svg>
+                  </span>
+                </div>
+                <div class="stat-card__value" data-target="1" data-suffix=".82">0</div>
+                <div class="stat-card__label">EPS</div>
+              </div>
+
+              <div class="stat-card">
+                <div class="stat-card__top">
+                  <span class="stat-card__icon stat-card__icon--green">
+                    <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M3 17 9 11l4 4 8-8" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                  </span>
+                </div>
+                <div class="stat-card__value" data-target="38" data-prefix="$" data-suffix="B">0</div>
+                <div class="stat-card__label">Cash Flow</div>
+              </div>
+
+              <div class="stat-card">
+                <div class="stat-card__top">
+                  <span class="stat-card__icon stat-card__icon--amber">
+                    <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect x="3" y="4" width="8" height="16" rx="1" stroke="currentColor" stroke-width="1.8"/><rect x="13" y="4" width="8" height="16" rx="1" stroke="currentColor" stroke-width="1.8"/></svg>
+                  </span>
+                </div>
+                <div class="stat-card__value" data-target="8" data-prefix="$" data-suffix="B">0</div>
+                <div class="stat-card__label">Debt</div>
+              </div>
+
+              <div class="stat-card">
+                <div class="stat-card__top">
+                  <span class="stat-card__icon stat-card__icon--green">
+                    <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M3 17 9 11l4 4 8-8" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                  </span>
+                </div>
+                <div class="stat-card__value" data-target="91" data-suffix="%">0</div>
+                <div class="stat-card__label">ROE</div>
+              </div>
+            </div>
+          </section>
+
+          <!-- ==========================================================
+               4. AI RECOMMENDATION
+               ========================================================== -->
+          <section class="panel ai-recommendation" aria-label="AI recommendation" data-skeleton>
+            <div class="panel__head">
+              <h2 class="panel__title">AI Recommendation</h2>
+              <span class="eyebrow">
+                <svg width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true"><circle cx="6" cy="6" r="6" fill="currentColor"/></svg>
+                AI Generated
+              </span>
+            </div>
+
+            <div class="ai-recommendation__body">
+              <div class="ai-recommendation__verdict">
+                <span class="ai-recommendation__verdict-label badge badge--low">Strong Buy</span>
+                <span class="ai-recommendation__confidence">95% confidence</span>
+              </div>
+              <p class="ai-recommendation__explanation">
+                NVIDIA continues to show exceptional revenue growth driven by sustained AI infrastructure demand.
+                Margins remain industry-leading, debt is minimal relative to cash flow, and near-term risk factors
+                are limited to valuation sensitivity rather than fundamentals. The model weighs growth trajectory
+                and balance-sheet strength most heavily in this recommendation.
+              </p>
+            </div>
+          </section>
+
+          <!-- ==========================================================
+               5. SWOT ANALYSIS
+               ========================================================== -->
+          <section class="panel swot" aria-label="SWOT analysis">
+            <div class="panel__head">
+              <h2 class="panel__title">SWOT Analysis</h2>
+            </div>
+            <div class="swot-grid">
+              <div class="swot-quadrant swot-quadrant--strength">
+                <h3 class="swot-quadrant__title">Strengths</h3>
+                <ul class="swot-quadrant__list">
+                  <li>Dominant market share in AI accelerator chips</li>
+                  <li>Industry-leading gross margins</li>
+                  <li>Strong balance sheet with low debt</li>
+                </ul>
+              </div>
+              <div class="swot-quadrant swot-quadrant--weakness">
+                <h3 class="swot-quadrant__title">Weaknesses</h3>
+                <ul class="swot-quadrant__list">
+                  <li>High customer concentration risk</li>
+                  <li>Premium valuation leaves little margin for error</li>
+                </ul>
+              </div>
+              <div class="swot-quadrant swot-quadrant--opportunity">
+                <h3 class="swot-quadrant__title">Opportunities</h3>
+                <ul class="swot-quadrant__list">
+                  <li>Expanding into enterprise AI software</li>
+                  <li>Growth in automotive and robotics chips</li>
+                  <li>New data center partnerships</li>
+                </ul>
+              </div>
+              <div class="swot-quadrant swot-quadrant--threat">
+                <h3 class="swot-quadrant__title">Threats</h3>
+                <ul class="swot-quadrant__list">
+                  <li>Export policy restrictions</li>
+                  <li>Rising competition from custom AI silicon</li>
+                </ul>
+              </div>
+            </div>
+          </section>
+
+          <!-- ==========================================================
+               6. MARKET SENTIMENT
+               ========================================================== -->
+          <section class="panel market-sentiment" aria-label="Market sentiment" data-skeleton>
+            <div class="panel__head">
+              <h2 class="panel__title">Market Sentiment</h2>
+              <span class="badge badge--low">Bullish</span>
+            </div>
+            <div class="market-sentiment__body">
+              <div class="chart-card__figure market-sentiment__gauge">
+                <svg viewBox="0 0 120 120" aria-hidden="true">
+                  <circle cx="60" cy="60" r="40" fill="none" stroke="var(--color-border)" stroke-width="10"/>
+                  <circle class="gauge-arc" style="--gauge-offset:38;" cx="60" cy="60" r="40" stroke="var(--color-success)" pathLength="251" stroke-dasharray="251" transform="rotate(-90 60 60)"/>
+                  <text x="60" y="66" text-anchor="middle" class="gauge-value">85</text>
+                </svg>
+              </div>
+              <div class="market-sentiment__breakdown">
+                <div class="ai-insight-row">
+                  <span class="ai-insight-row__label">Analyst Sentiment</span>
+                  <span class="badge badge--low">Positive</span>
+                </div>
+                <div class="ai-insight-row">
+                  <span class="ai-insight-row__label">Social Sentiment</span>
+                  <span class="badge badge--low">Positive</span>
+                </div>
+                <div class="ai-insight-row">
+                  <span class="ai-insight-row__label">News Sentiment</span>
+                  <span class="badge badge--medium">Mixed</span>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <!-- ==========================================================
+               7. AI PROCESSING TIMELINE
+               ========================================================== -->
+          <section class="panel ai-timeline" aria-label="AI processing timeline">
+            <div class="panel__head">
+              <h2 class="panel__title">AI Processing Timeline</h2>
+            </div>
+            <ol class="ai-timeline__list">
+              <li class="ai-timeline__step is-complete">
+                <span class="ai-timeline__marker"></span>
+                <div>
+                  <div class="ai-timeline__title">Financial data ingested</div>
+                  <div class="ai-timeline__meta">10-K, 10-Q, and earnings call transcripts parsed</div>
+                </div>
+              </li>
+              <li class="ai-timeline__step is-complete">
+                <span class="ai-timeline__marker"></span>
+                <div>
+                  <div class="ai-timeline__title">Risk model applied</div>
+                  <div class="ai-timeline__meta">Volatility, leverage, and liquidity factors scored</div>
+                </div>
+              </li>
+              <li class="ai-timeline__step is-complete">
+                <span class="ai-timeline__marker"></span>
+                <div>
+                  <div class="ai-timeline__title">Market sentiment analyzed</div>
+                  <div class="ai-timeline__meta">News, analyst notes, and social signals aggregated</div>
+                </div>
+              </li>
+              <li class="ai-timeline__step is-complete">
+                <span class="ai-timeline__marker"></span>
+                <div>
+                  <div class="ai-timeline__title">Recommendation generated</div>
+                  <div class="ai-timeline__meta">Composite score finalized with 95% confidence</div>
+                </div>
+              </li>
+            </ol>
+          </section>
+
+          <!-- ==========================================================
+               8. FUTURE PREDICTION
+               ========================================================== -->
+          <section aria-label="Future prediction">
+            <div class="panel__head panel__head--loose">
+              <h2 class="panel__title">Future Prediction</h2>
+            </div>
+            <div class="prediction-grid">
+              <div class="panel prediction-card">
+                <span class="company-overview__label">1 Year</span>
+                <div class="prediction-card__value positive">+18.4%</div>
+                <p class="prediction-card__desc">Projected price appreciation based on current growth trajectory.</p>
+              </div>
+              <div class="panel prediction-card">
+                <span class="company-overview__label">3 Years</span>
+                <div class="prediction-card__value positive">+52.1%</div>
+                <p class="prediction-card__desc">Assumes continued AI infrastructure demand and margin stability.</p>
+              </div>
+              <div class="panel prediction-card">
+                <span class="company-overview__label">5 Years</span>
+                <div class="prediction-card__value positive">+96.7%</div>
+                <p class="prediction-card__desc">Long-term projection factoring in market expansion and competition.</p>
+              </div>
+            </div>
+          </section>
+
+          <!-- ==========================================================
+               9. ACTION BUTTONS
+               ========================================================== -->
+          <section class="research-actions" aria-label="Analysis actions">
+            <button type="button" class="btn btn-primary" data-action="generate-report">
+              <svg viewBox="0 0 24 24" fill="none" aria-hidden="true" width="18" height="18"><path d="M12 2 4 5v6c0 5.2 3.4 9 8 11 4.6-2 8-5.8 8-11V5l-8-3Z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></svg>
+              <span class="btn-label">Generate Report</span>
+            </button>
+            <button type="button" class="btn btn-ghost" data-action="export-pdf">
+              <svg viewBox="0 0 24 24" fill="none" aria-hidden="true" width="18" height="18"><path d="M7 3h7l5 5v13H7V3Z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><path d="M14 3v5h5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+              <span class="btn-label">Export</span>
+            </button>
+            <button type="button" class="btn btn-ghost" data-action="compare-company">
+              <svg viewBox="0 0 24 24" fill="none" aria-hidden="true" width="18" height="18"><rect x="3" y="4" width="8" height="16" rx="1" stroke="currentColor" stroke-width="1.8"/><rect x="13" y="4" width="8" height="16" rx="1" stroke="currentColor" stroke-width="1.8"/></svg>
+              <span class="btn-label">Compare</span>
+            </button>
+          </section>
+
+        </main>
+      </div>
+    </div>
+  </div>
+
+  <script src="js/dashboard.js" defer></script>
+  <script src="js/company-research.js" defer></script>
+  <script src="js/ai-analysis.js" defer></script>
+</body>
+</html>
