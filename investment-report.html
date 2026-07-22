@@ -1,0 +1,541 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Investment Report — InvestIQ</title>
+  <meta name="description" content="AI-generated investment report with executive summary, financial highlights, risk analysis, and forecast." />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@500;600;700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="css/variables.css" />
+  <link rel="stylesheet" href="css/base.css" />
+  <link rel="stylesheet" href="css/dashboard.css" />
+  <link rel="stylesheet" href="css/company-research.css" />
+  <link rel="stylesheet" href="css/ai-analysis.css" />
+  <link rel="stylesheet" href="css/investment-report.css" />
+</head>
+<body>
+
+  <div class="sidebar-backdrop" id="sidebarBackdrop"></div>
+
+  <div class="dashboard-shell">
+
+    <!-- ==========================================================
+         SIDEBAR (same structure as other app pages, Reports active)
+         ========================================================== -->
+    <aside class="sidebar" id="sidebar">
+      <a href="index.html" class="sidebar__logo">
+        <svg width="26" height="26" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <rect x="3" y="16" width="4" height="9" rx="1" fill="currentColor"/>
+          <rect x="12" y="10" width="4" height="15" rx="1" fill="currentColor"/>
+          <rect x="21" y="3" width="4" height="22" rx="1" fill="currentColor"/>
+        </svg>
+        <span class="sidebar__logo-text">InvestIQ</span>
+      </a>
+
+      <nav class="sidebar__group">
+        <span class="sidebar__group-title">Workspace</span>
+        <a href="dashboard.html" class="sidebar__link">
+          <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect x="3" y="3" width="7" height="9" rx="1.5" stroke="currentColor" stroke-width="1.8"/><rect x="14" y="3" width="7" height="5" rx="1.5" stroke="currentColor" stroke-width="1.8"/><rect x="14" y="12" width="7" height="9" rx="1.5" stroke="currentColor" stroke-width="1.8"/><rect x="3" y="16" width="7" height="5" rx="1.5" stroke="currentColor" stroke-width="1.8"/></svg>
+          <span>Dashboard</span>
+        </a>
+        <a href="company-research.html" class="sidebar__link">
+          <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="11" cy="11" r="7" stroke="currentColor" stroke-width="1.8"/><path d="m20 20-3.5-3.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+          <span>Company Research</span>
+        </a>
+        <a href="ai-analysis.html" class="sidebar__link">
+          <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 2 4 5v6c0 5.2 3.4 9 8 11 4.6-2 8-5.8 8-11V5l-8-3Z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><path d="m9 12 2 2 4-4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          <span>AI Analysis</span>
+        </a>
+        <a href="investment-report.html" class="sidebar__link is-active" aria-current="page">
+          <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M7 3h7l5 5v13H7V3Z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><path d="M14 3v5h5M9 13h6M9 17h6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+          <span>Reports</span>
+        </a>
+        <a href="#" class="sidebar__link">
+          <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6 3h12v18l-6-4-6 4V3Z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></svg>
+          <span>Saved Reports</span>
+        </a>
+      </nav>
+
+      <div class="sidebar__spacer"></div>
+
+      <nav class="sidebar__group sidebar__footer">
+        <span class="sidebar__group-title">Account</span>
+        <a href="#" class="sidebar__link">
+          <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="8" r="4" stroke="currentColor" stroke-width="1.8"/><path d="M4 20c1.6-3.8 5-6 8-6s6.4 2.2 8 6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+          <span>Profile</span>
+        </a>
+        <a href="#" class="sidebar__link">
+          <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="12" r="3" stroke="currentColor" stroke-width="1.8"/><path d="M19 12a7 7 0 0 0-.1-1.2l2-1.6-2-3.4-2.4.9a7 7 0 0 0-2-1.2L14 3h-4l-.5 2.5a7 7 0 0 0-2 1.2l-2.4-.9-2 3.4 2 1.6a7 7 0 0 0 0 2.4l-2 1.6 2 3.4 2.4-.9a7 7 0 0 0 2 1.2L10 21h4l.5-2.5a7 7 0 0 0 2-1.2l2.4.9 2-3.4-2-1.6c.07-.4.1-.8.1-1.2Z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/></svg>
+          <span>Settings</span>
+        </a>
+        <a href="#" class="sidebar__link">
+          <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="1.8"/><path d="M9.5 9a2.5 2.5 0 0 1 4.9.8c0 1.7-2.4 1.7-2.4 3.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/><circle cx="12" cy="16.5" r="0.9" fill="currentColor"/></svg>
+          <span>Help</span>
+        </a>
+        <a href="index.html" class="sidebar__link sidebar__link--logout">
+          <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/><path d="M16 17l5-5-5-5M21 12H9" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          <span>Logout</span>
+        </a>
+      </nav>
+    </aside>
+
+    <!-- ==========================================================
+         CONTENT COLUMN
+         ========================================================== -->
+    <div class="dashboard-content">
+
+      <!-- TOPBAR (same structure as other app pages) -->
+      <header class="topbar">
+        <button class="topbar__toggle" id="sidebarToggle" aria-label="Toggle sidebar" aria-expanded="false">
+          <svg viewBox="0 0 24 24" fill="none" aria-hidden="true" width="20" height="20"><path d="M4 6h16M4 12h16M4 18h16" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+        </button>
+
+        <div class="topbar__search">
+          <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="11" cy="11" r="7" stroke="currentColor" stroke-width="1.8"/><path d="m20 20-3.5-3.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+          <input type="search" placeholder="Search companies, reports, tickers..." aria-label="Search" />
+        </div>
+
+        <div class="topbar__spacer"></div>
+
+        <span class="topbar__date" id="topbarDate"></span>
+
+        <div class="topbar__actions">
+          <div class="dropdown" data-dropdown>
+            <button class="topbar__icon-btn" data-dropdown-trigger aria-label="Notifications" aria-expanded="false" aria-haspopup="true">
+              <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6 8a6 6 0 1 1 12 0c0 4 1.5 5.5 2 6H4c.5-.5 2-2 2-6Z" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/><path d="M10 20a2 2 0 0 0 4 0" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg>
+              <span class="topbar__badge" aria-hidden="true"></span>
+            </button>
+            <div class="dropdown__panel" role="menu">
+              <div class="dropdown__header">
+                Notifications
+                <a href="#">Mark all read</a>
+              </div>
+              <div class="notification-item">
+                <span class="notification-item__dot"></span>
+                <div>
+                  <div class="notification-item__title">Your NVIDIA Corp. report has finished generating.</div>
+                  <div class="notification-item__time">Just now</div>
+                </div>
+              </div>
+              <div class="notification-item">
+                <span class="notification-item__dot"></span>
+                <div>
+                  <div class="notification-item__title">Your Tesla Inc. report is ready to view.</div>
+                  <div class="notification-item__time">1 hour ago</div>
+                </div>
+              </div>
+              <div class="notification-item">
+                <span class="notification-item__dot"></span>
+                <div>
+                  <div class="notification-item__title">Weekly market summary is available.</div>
+                  <div class="notification-item__time">Yesterday</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="dropdown" data-dropdown>
+            <button class="user-trigger" data-dropdown-trigger aria-label="Account menu" aria-expanded="false" aria-haspopup="true">
+              <span class="user-avatar">AS</span>
+              <span class="user-trigger__name">Aditi Sharma</span>
+              <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="m6 9 6 6 6-6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </button>
+            <div class="dropdown__panel user-menu" role="menu">
+              <div class="user-menu__identity">
+                <span class="user-avatar">AS</span>
+                <div>
+                  <div class="user-menu__identity-name">Aditi Sharma</div>
+                  <div class="user-menu__identity-email">aditi.sharma@investiq.com</div>
+                </div>
+              </div>
+              <a href="#" class="dropdown-link">
+                <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="8" r="4" stroke="currentColor" stroke-width="1.8"/><path d="M4 20c1.6-3.8 5-6 8-6s6.4 2.2 8 6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+                Profile
+              </a>
+              <a href="#" class="dropdown-link">
+                <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="12" r="3" stroke="currentColor" stroke-width="1.8"/><path d="M19 12a7 7 0 0 0-.1-1.2l2-1.6-2-3.4-2.4.9a7 7 0 0 0-2-1.2L14 3h-4l-.5 2.5a7 7 0 0 0-2 1.2l-2.4-.9-2 3.4 2 1.6a7 7 0 0 0 0 2.4l-2 1.6 2 3.4 2.4-.9a7 7 0 0 0 2 1.2L10 21h4l.5-2.5a7 7 0 0 0 2-1.2l2.4.9 2-3.4-2-1.6c.07-.4.1-.8.1-1.2Z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/></svg>
+                Settings
+              </a>
+              <div class="dropdown-divider"></div>
+              <a href="index.html" class="dropdown-link dropdown-link--danger">
+                <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/><path d="M16 17l5-5-5-5M21 12H9" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                Logout
+              </a>
+            </div>
+          </div>
+        </div>
+      </header>
+
+      <!-- BODY -->
+      <div class="dashboard-body dashboard-body--single">
+        <main class="dashboard-main report">
+
+          <!-- ==========================================================
+               1. REPORT HEADER
+               ========================================================== -->
+          <header class="panel report-header" aria-label="Report header">
+            <div class="report-header__top">
+              <div class="ai-header__identity">
+                <div class="company-overview__logo">NV</div>
+                <div>
+                  <h1 class="ai-header__name">NVIDIA Corp. — Investment Report</h1>
+                  <span class="company-overview__ticker">NASDAQ: NVDA</span>
+                </div>
+              </div>
+              <span class="eyebrow report-header__ai-badge">
+                <svg width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true"><circle cx="6" cy="6" r="6" fill="currentColor"/></svg>
+                AI Generated
+              </span>
+            </div>
+
+            <div class="report-header__meta">
+              <div class="ai-header__meta-item">
+                <span class="company-overview__label">Report Generated</span>
+                <span class="company-overview__value" id="reportTimestamp">16 July 2026 · 10:42 AM</span>
+              </div>
+              <div class="ai-header__meta-item">
+                <span class="company-overview__label">Overall Recommendation</span>
+                <span class="badge badge--low report-header__recommendation">Strong Buy</span>
+              </div>
+            </div>
+          </header>
+
+          <!-- ==========================================================
+               2. EXECUTIVE SUMMARY
+               ========================================================== -->
+          <section class="panel executive-summary" aria-label="Executive summary" data-skeleton>
+            <div class="panel__head">
+              <h2 class="panel__title">Executive Summary</h2>
+            </div>
+
+            <p class="executive-summary__text">
+              NVIDIA Corp. designs graphics processing units and AI accelerator hardware that power the majority of
+              today's large-scale AI training and inference workloads. The company holds a dominant position in the
+              data center GPU market and continues to expand into automotive, robotics, and enterprise AI software.
+            </p>
+            <p class="executive-summary__text">
+              <strong>AI Summary:</strong> Sustained demand for AI infrastructure has driven exceptional revenue and
+              margin expansion over the trailing twelve months. The balance sheet remains conservatively leveraged,
+              and near-term risk is concentrated in valuation sensitivity and export policy rather than underlying
+              business fundamentals.
+            </p>
+
+            <div class="executive-summary__grid">
+              <div class="company-overview__item">
+                <span class="company-overview__label">Investment Horizon</span>
+                <span class="company-overview__value">3–5 Years</span>
+              </div>
+              <div class="company-overview__item">
+                <span class="company-overview__label">Confidence</span>
+                <span class="company-overview__value">95%</span>
+              </div>
+              <div class="company-overview__item">
+                <span class="company-overview__label">Overall Score</span>
+                <span class="company-overview__value">92 / 100</span>
+              </div>
+            </div>
+          </section>
+
+          <!-- ==========================================================
+               3. FINANCIAL HIGHLIGHTS
+               ========================================================== -->
+          <section aria-label="Financial highlights">
+            <div class="panel__head panel__head--loose">
+              <h2 class="panel__title">Financial Highlights</h2>
+            </div>
+            <div class="stat-cards financial-summary report-financials">
+              <div class="stat-card">
+                <div class="stat-card__top">
+                  <span class="stat-card__icon stat-card__icon--blue">
+                    <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 19V5m6 14V9m6 10V3" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                  </span>
+                </div>
+                <div class="stat-card__value">$96B</div>
+                <div class="stat-card__label">Revenue</div>
+              </div>
+              <div class="stat-card">
+                <div class="stat-card__top">
+                  <span class="stat-card__icon stat-card__icon--green">
+                    <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M3 17 9 11l4 4 8-8" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                  </span>
+                </div>
+                <div class="stat-card__value">$45B</div>
+                <div class="stat-card__label">Net Profit</div>
+              </div>
+              <div class="stat-card">
+                <div class="stat-card__top">
+                  <span class="stat-card__icon stat-card__icon--blue">
+                    <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 2 4 5v6c0 5.2 3.4 9 8 11 4.6-2 8-5.8 8-11V5l-8-3Z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></svg>
+                  </span>
+                </div>
+                <div class="stat-card__value">$1.82</div>
+                <div class="stat-card__label">EPS</div>
+              </div>
+              <div class="stat-card">
+                <div class="stat-card__top">
+                  <span class="stat-card__icon stat-card__icon--blue">
+                    <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M3 21V9l6-4 6 4v12M9 21V13h6v8" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></svg>
+                  </span>
+                </div>
+                <div class="stat-card__value">$3.36T</div>
+                <div class="stat-card__label">Market Cap</div>
+              </div>
+              <div class="stat-card">
+                <div class="stat-card__top">
+                  <span class="stat-card__icon stat-card__icon--amber">
+                    <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect x="3" y="4" width="8" height="16" rx="1" stroke="currentColor" stroke-width="1.8"/><rect x="13" y="4" width="8" height="16" rx="1" stroke="currentColor" stroke-width="1.8"/></svg>
+                  </span>
+                </div>
+                <div class="stat-card__value">58.9x</div>
+                <div class="stat-card__label">PE Ratio</div>
+              </div>
+              <div class="stat-card">
+                <div class="stat-card__top">
+                  <span class="stat-card__icon stat-card__icon--green">
+                    <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M3 17 9 11l4 4 8-8" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                  </span>
+                </div>
+                <div class="stat-card__value">91%</div>
+                <div class="stat-card__label">ROE</div>
+              </div>
+              <div class="stat-card">
+                <div class="stat-card__top">
+                  <span class="stat-card__icon stat-card__icon--red">
+                    <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 2 3 6v6c0 5 4 8.5 9 10 5-1.5 9-5 9-10V6l-9-4Z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></svg>
+                  </span>
+                </div>
+                <div class="stat-card__value">0.24</div>
+                <div class="stat-card__label">Debt to Equity</div>
+              </div>
+              <div class="stat-card">
+                <div class="stat-card__top">
+                  <span class="stat-card__icon stat-card__icon--green">
+                    <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M7 3h7l5 5v13H7V3Z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><path d="M14 3v5h5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+                  </span>
+                </div>
+                <div class="stat-card__value">$38B</div>
+                <div class="stat-card__label">Free Cash Flow</div>
+              </div>
+            </div>
+          </section>
+
+          <!-- ==========================================================
+               4. AI INSIGHTS
+               ========================================================== -->
+          <section class="panel report-insights" aria-label="AI insights" data-skeleton>
+            <div class="panel__head">
+              <h2 class="panel__title">AI Insights</h2>
+            </div>
+            <div class="report-insights__grid">
+              <div class="report-insights__column">
+                <h3 class="report-insights__title report-insights__title--positive">Top Positive Factors</h3>
+                <ul class="report-insights__list">
+                  <li>Dominant share of the AI accelerator market</li>
+                  <li>Industry-leading gross margins, expanding YoY</li>
+                  <li>Minimal debt relative to free cash flow</li>
+                </ul>
+              </div>
+              <div class="report-insights__column">
+                <h3 class="report-insights__title report-insights__title--negative">Top Concerns</h3>
+                <ul class="report-insights__list">
+                  <li>Valuation trades at a significant premium to sector average</li>
+                  <li>Revenue concentration among a small number of large customers</li>
+                  <li>Exposure to evolving semiconductor export regulations</li>
+                </ul>
+              </div>
+            </div>
+            <div class="report-insights__outlook">
+              <h3 class="report-insights__title">Business Outlook</h3>
+              <p class="executive-summary__text">
+                Demand for AI compute infrastructure is expected to remain elevated over the next 12–24 months as
+                enterprise and cloud providers continue scaling training and inference capacity. The company's
+                roadmap into adjacent markets — automotive, robotics, and enterprise software — provides additional
+                diversification beyond its core data center business.
+              </p>
+            </div>
+          </section>
+
+          <!-- ==========================================================
+               5. SWOT SUMMARY
+               ========================================================== -->
+          <section class="panel swot" aria-label="SWOT summary">
+            <div class="panel__head">
+              <h2 class="panel__title">SWOT Summary</h2>
+            </div>
+            <div class="swot-grid">
+              <div class="swot-quadrant swot-quadrant--strength">
+                <h3 class="swot-quadrant__title">Strengths</h3>
+                <ul class="swot-quadrant__list">
+                  <li>Dominant market share in AI accelerator chips</li>
+                  <li>Industry-leading gross margins</li>
+                  <li>Strong balance sheet with low debt</li>
+                </ul>
+              </div>
+              <div class="swot-quadrant swot-quadrant--weakness">
+                <h3 class="swot-quadrant__title">Weaknesses</h3>
+                <ul class="swot-quadrant__list">
+                  <li>High customer concentration risk</li>
+                  <li>Premium valuation leaves little margin for error</li>
+                </ul>
+              </div>
+              <div class="swot-quadrant swot-quadrant--opportunity">
+                <h3 class="swot-quadrant__title">Opportunities</h3>
+                <ul class="swot-quadrant__list">
+                  <li>Expanding into enterprise AI software</li>
+                  <li>Growth in automotive and robotics chips</li>
+                  <li>New data center partnerships</li>
+                </ul>
+              </div>
+              <div class="swot-quadrant swot-quadrant--threat">
+                <h3 class="swot-quadrant__title">Threats</h3>
+                <ul class="swot-quadrant__list">
+                  <li>Export policy restrictions</li>
+                  <li>Rising competition from custom AI silicon</li>
+                </ul>
+              </div>
+            </div>
+          </section>
+
+          <!-- ==========================================================
+               6. RISK ANALYSIS
+               ========================================================== -->
+          <section class="panel risk-analysis" aria-label="Risk analysis" data-skeleton>
+            <div class="panel__head">
+              <h2 class="panel__title">Risk Analysis</h2>
+            </div>
+            <div class="risk-analysis__body">
+              <div class="risk-analysis__meter">
+                <div class="chart-card__figure">
+                  <svg viewBox="0 0 120 120" aria-hidden="true">
+                    <circle cx="60" cy="60" r="40" fill="none" stroke="var(--color-border)" stroke-width="10"/>
+                    <circle class="gauge-arc" style="--gauge-offset:214;" cx="60" cy="60" r="40" stroke="var(--color-success)" pathLength="251" stroke-dasharray="251" transform="rotate(-90 60 60)"/>
+                    <text x="60" y="66" text-anchor="middle" class="gauge-value">24</text>
+                  </svg>
+                </div>
+                <span class="company-overview__label">Overall Risk Meter</span>
+              </div>
+              <div class="risk-analysis__breakdown">
+                <div class="ai-insight-row">
+                  <span class="ai-insight-row__label">Market Risk</span>
+                  <span class="badge badge--medium">Medium</span>
+                </div>
+                <div class="ai-insight-row">
+                  <span class="ai-insight-row__label">Financial Risk</span>
+                  <span class="badge badge--low">Low</span>
+                </div>
+                <div class="ai-insight-row">
+                  <span class="ai-insight-row__label">Industry Risk</span>
+                  <span class="badge badge--medium">Medium</span>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <!-- ==========================================================
+               7. FUTURE FORECAST
+               ========================================================== -->
+          <section aria-label="Future forecast">
+            <div class="panel__head panel__head--loose">
+              <h2 class="panel__title">Future Forecast</h2>
+            </div>
+            <div class="prediction-grid">
+              <div class="panel prediction-card">
+                <span class="company-overview__label">1 Year</span>
+                <div class="prediction-card__value positive">+18.4%</div>
+                <div class="prediction-card__row">
+                  <span class="company-overview__label">Expected Price</span>
+                  <span class="company-overview__value">$163.20</span>
+                </div>
+                <div class="prediction-card__row">
+                  <span class="company-overview__label">Confidence</span>
+                  <span class="company-overview__value">92%</span>
+                </div>
+              </div>
+              <div class="panel prediction-card">
+                <span class="company-overview__label">3 Years</span>
+                <div class="prediction-card__value positive">+52.1%</div>
+                <div class="prediction-card__row">
+                  <span class="company-overview__label">Expected Price</span>
+                  <span class="company-overview__value">$209.75</span>
+                </div>
+                <div class="prediction-card__row">
+                  <span class="company-overview__label">Confidence</span>
+                  <span class="company-overview__value">84%</span>
+                </div>
+              </div>
+              <div class="panel prediction-card">
+                <span class="company-overview__label">5 Years</span>
+                <div class="prediction-card__value positive">+96.7%</div>
+                <div class="prediction-card__row">
+                  <span class="company-overview__label">Expected Price</span>
+                  <span class="company-overview__value">$271.30</span>
+                </div>
+                <div class="prediction-card__row">
+                  <span class="company-overview__label">Confidence</span>
+                  <span class="company-overview__value">71%</span>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <!-- ==========================================================
+               8. FINAL RECOMMENDATION
+               ========================================================== -->
+          <section class="panel ai-recommendation final-recommendation" aria-label="Final recommendation" data-skeleton>
+            <div class="panel__head">
+              <h2 class="panel__title">Final Recommendation</h2>
+              <span class="eyebrow">
+                <svg width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true"><circle cx="6" cy="6" r="6" fill="currentColor"/></svg>
+                AI Generated
+              </span>
+            </div>
+            <div class="ai-recommendation__body">
+              <div class="ai-recommendation__verdict">
+                <span class="ai-recommendation__verdict-label badge badge--low">Strong Buy</span>
+                <span class="ai-recommendation__confidence">95% confidence</span>
+              </div>
+              <p class="ai-recommendation__explanation">
+                Based on sustained AI infrastructure demand, industry-leading margins, and a conservatively
+                leveraged balance sheet, InvestIQ's model rates NVIDIA Corp. a <strong>Strong Buy</strong> for
+                investors with a 3–5 year horizon. Position sizing should account for above-average valuation
+                risk; investors with a lower risk tolerance may consider phased entry rather than a single
+                lump-sum allocation.
+              </p>
+            </div>
+          </section>
+
+          <!-- ==========================================================
+               9. REPORT ACTIONS
+               ========================================================== -->
+          <section class="research-actions report-actions" aria-label="Report actions">
+            <button type="button" class="btn btn-primary" data-action="download-pdf">
+              <svg viewBox="0 0 24 24" fill="none" aria-hidden="true" width="18" height="18"><path d="M7 3h7l5 5v13H7V3Z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><path d="M14 3v5h5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+              <span class="btn-label">Download PDF</span>
+            </button>
+            <button type="button" class="btn btn-ghost" data-action="print-report">
+              <svg viewBox="0 0 24 24" fill="none" aria-hidden="true" width="18" height="18"><path d="M6 9V3h12v6" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><rect x="4" y="9" width="16" height="8" rx="1.5" stroke="currentColor" stroke-width="1.8"/><path d="M6 15h12v6H6v-6Z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></svg>
+              <span class="btn-label">Print Report</span>
+            </button>
+            <button type="button" class="btn btn-ghost" data-action="share-report">
+              <svg viewBox="0 0 24 24" fill="none" aria-hidden="true" width="18" height="18"><circle cx="18" cy="5" r="3" stroke="currentColor" stroke-width="1.8"/><circle cx="6" cy="12" r="3" stroke="currentColor" stroke-width="1.8"/><circle cx="18" cy="19" r="3" stroke="currentColor" stroke-width="1.8"/><path d="m8.6 10.5 6.8-3.9M8.6 13.5l6.8 3.9" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+              <span class="btn-label">Share Report</span>
+            </button>
+            <a href="dashboard.html" class="btn btn-ghost">
+              <svg viewBox="0 0 24 24" fill="none" aria-hidden="true" width="18" height="18"><path d="M19 12H5M11 6l-6 6 6 6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              <span class="btn-label">Back to Dashboard</span>
+            </a>
+          </section>
+
+        </main>
+      </div>
+    </div>
+  </div>
+
+  <script src="js/dashboard.js" defer></script>
+  <script src="js/investment-report.js" defer></script>
+</body>
+</html>
