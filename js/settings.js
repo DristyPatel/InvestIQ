@@ -260,7 +260,44 @@ document.addEventListener('DOMContentLoaded', function () {
     }, 2600);
   }
 
+  /* ------------------------------------------------------------------
+     DANGER ZONE
+     "Deactivate Account" and "Log Out Other Sessions" had no handler
+     at all before -- clicking did nothing. Deactivating ends the local
+     session and returns to the landing page, same as Logout, since
+     there's no backend yet to actually flag the account as disabled.
+     Logging out other sessions has no other sessions to act on in a
+     frontend-only build, so it just confirms the action via toast.
+
+     BACKEND HOOK: POST to /api/account/deactivate and
+     /api/sessions/revoke-others respectively once Flask exists.
+     ------------------------------------------------------------------ */
+  function initDangerZone() {
+    var deactivateBtn = form.querySelector('[data-action="deactivate-account"]');
+    var logoutSessionsBtn = form.querySelector('[data-action="logout-sessions"]');
+
+    if (deactivateBtn) {
+      deactivateBtn.addEventListener('click', function () {
+        var confirmed = window.confirm(
+          'Deactivate your InvestIQ account? You can reactivate anytime by logging back in.'
+        );
+        if (!confirmed) return;
+
+        localStorage.removeItem('investiq_auth');
+        localStorage.removeItem('investiq_user');
+        window.location.href = 'index.html';
+      });
+    }
+
+    if (logoutSessionsBtn) {
+      logoutSessionsBtn.addEventListener('click', function () {
+        showToast('All other sessions have been signed out.', 'success');
+      });
+    }
+  }
+
   initPasswordToggles();
   snapshotDefaults();
   trackChanges();
+  initDangerZone();
 });

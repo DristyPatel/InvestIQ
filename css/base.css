@@ -88,6 +88,7 @@ ul, ol {
 
 .section {
   padding-block: var(--space-9);
+  scroll-margin-top: 88px; /* keeps anchor-scrolled sections clear of the sticky navbar */
 }
 
 .eyebrow {

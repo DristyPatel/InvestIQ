@@ -112,7 +112,7 @@
             </svg>
             <span>Dashboard</span>
           </a>
-          <a href="#" class="sidebar__link">
+          <a href="company-research.html" class="sidebar__link">
             <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
               <circle
                 cx="11"
@@ -130,7 +130,7 @@
             </svg>
             <span>Company Research</span>
           </a>
-          <a href="#" class="sidebar__link">
+          <a href="ai-analysis.html" class="sidebar__link">
             <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
               <path
                 d="M12 2 4 5v6c0 5.2 3.4 9 8 11 4.6-2 8-5.8 8-11V5l-8-3Z"
@@ -148,7 +148,7 @@
             </svg>
             <span>AI Analysis</span>
           </a>
-          <a href="#" class="sidebar__link">
+          <a href="investment-report.html" class="sidebar__link">
             <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
               <path
                 d="M7 3h7l5 5v13H7V3Z"
@@ -165,7 +165,7 @@
             </svg>
             <span>Reports</span>
           </a>
-          <a href="#" class="sidebar__link">
+          <a href="saved-reports.html" class="sidebar__link">
             <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
               <path
                 d="M6 3h12v18l-6-4-6 4V3Z"
@@ -182,7 +182,7 @@
 
         <nav class="sidebar__group sidebar__footer">
           <span class="sidebar__group-title">Account</span>
-          <a href="#" class="sidebar__link">
+          <a href="profile.html" class="sidebar__link">
             <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
               <circle
                 cx="12"
@@ -200,7 +200,7 @@
             </svg>
             <span>Profile</span>
           </a>
-          <a href="#" class="sidebar__link">
+          <a href="settings.html" class="sidebar__link">
             <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
               <circle
                 cx="12"
@@ -218,7 +218,7 @@
             </svg>
             <span>Settings</span>
           </a>
-          <a href="#" class="sidebar__link">
+          <a href="help.html" class="sidebar__link">
             <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
               <circle
                 cx="12"
@@ -485,7 +485,7 @@
 
             <!-- QUICK ACTIONS -->
             <section class="quick-actions" aria-label="Quick actions">
-              <button class="quick-action" data-action="analyse">
+              <button type="button" class="quick-action" data-action="analyse">
                 <span class="quick-action__icon">
                   <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
                     <circle
@@ -505,7 +505,7 @@
                 </span>
                 <span class="quick-action__label">Analyse Company</span>
               </button>
-              <button class="quick-action" data-action="generate-report">
+              <button type="button" class="quick-action" data-action="generate-report">
                 <span class="quick-action__icon">
                   <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
                     <path
@@ -524,7 +524,7 @@
                 </span>
                 <span class="quick-action__label">Generate Report</span>
               </button>
-              <button class="quick-action" data-action="market-trends">
+              <button type="button" class="quick-action" data-action="market-trends">
                 <span class="quick-action__icon">
                   <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
                     <path
@@ -545,7 +545,7 @@
                 </span>
                 <span class="quick-action__label">View Market Trends</span>
               </button>
-              <button class="quick-action" data-action="compare">
+              <button type="button" class="quick-action" data-action="compare">
                 <span class="quick-action__icon">
                   <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
                     <rect
@@ -997,6 +997,7 @@
                       <td>10 Jul 2026</td>
                       <td>
                         <button
+                          type="button"
                           class="table-action-btn"
                           data-action="view-report"
                         >
@@ -1020,6 +1021,7 @@
                       <td>08 Jul 2026</td>
                       <td>
                         <button
+                          type="button"
                           class="table-action-btn"
                           data-action="view-report"
                         >
@@ -1043,6 +1045,7 @@
                       <td>07 Jul 2026</td>
                       <td>
                         <button
+                          type="button"
                           class="table-action-btn"
                           data-action="view-report"
                         >
@@ -1066,6 +1069,7 @@
                       <td>05 Jul 2026</td>
                       <td>
                         <button
+                          type="button"
                           class="table-action-btn"
                           data-action="view-report"
                         >
@@ -1089,6 +1093,7 @@
                       <td>02 Jul 2026</td>
                       <td>
                         <button
+                          type="button"
                           class="table-action-btn"
                           data-action="view-report"
                         >
@@ -1112,6 +1117,7 @@
                       <td>29 Jun 2026</td>
                       <td>
                         <button
+                          type="button"
                           class="table-action-btn"
                           data-action="view-report"
                         >
@@ -1131,27 +1137,27 @@
                 <a href="#" class="panel__link">Clear all</a>
               </div>
               <div class="search-chips">
-                <button class="search-chip" data-action="open-company">
+                <button type="button" class="search-chip" data-action="open-company" data-company="Apple">
                   <span class="search-chip__logo">AP</span
                   ><span class="search-chip__name">Apple</span>
                 </button>
-                <button class="search-chip" data-action="open-company">
+                <button type="button" class="search-chip" data-action="open-company" data-company="Microsoft">
                   <span class="search-chip__logo">MS</span
                   ><span class="search-chip__name">Microsoft</span>
                 </button>
-                <button class="search-chip" data-action="open-company">
+                <button type="button" class="search-chip" data-action="open-company" data-company="Tesla">
                   <span class="search-chip__logo">TS</span
                   ><span class="search-chip__name">Tesla</span>
                 </button>
-                <button class="search-chip" data-action="open-company">
+                <button type="button" class="search-chip" data-action="open-company" data-company="NVIDIA">
                   <span class="search-chip__logo">NV</span
                   ><span class="search-chip__name">NVIDIA</span>
                 </button>
-                <button class="search-chip" data-action="open-company">
+                <button type="button" class="search-chip" data-action="open-company" data-company="TCS">
                   <span class="search-chip__logo">TC</span
                   ><span class="search-chip__name">TCS</span>
                 </button>
-                <button class="search-chip" data-action="open-company">
+                <button type="button" class="search-chip" data-action="open-company" data-company="Reliance">
                   <span class="search-chip__logo">RE</span
                   ><span class="search-chip__name">Reliance</span>
                 </button>

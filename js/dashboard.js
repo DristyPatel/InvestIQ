@@ -21,6 +21,46 @@
   'use strict';
 
   /* ------------------------------------------------------------------
+     0. AUTH GUARD (frontend-only, no backend yet)
+     This file is loaded on every internal page (Dashboard, Company
+     Research, AI Analysis, Investment Report, Saved Reports, Profile,
+     Settings, Help) so this is the one place to gate all of them.
+     If there's no session flag from js/auth.js's startSession(), bounce
+     back to the login page immediately -- before the rest of the page
+     has a chance to render -- rather than waiting for DOMContentLoaded.
+
+     BACKEND HOOK: once Flask exists, replace the localStorage check
+     with a real session/token validation call.
+     ------------------------------------------------------------------ */
+  var SESSION_KEY = 'investiq_auth';
+  var USER_KEY = 'investiq_user';
+
+  if (localStorage.getItem(SESSION_KEY) !== 'true') {
+    window.location.href = 'login.html';
+    return;
+  }
+
+  /* ------------------------------------------------------------------
+     LOGOUT
+     Every internal page has a `.sidebar__link--logout` link that
+     already points at index.html -- this just makes sure the frontend
+     session is actually cleared before it navigates there, so a
+     "logged out" user can't hit the browser back button into a
+     Dashboard page that's supposed to be gated above.
+     ------------------------------------------------------------------ */
+  function initLogout() {
+    document.querySelectorAll('.sidebar__link--logout').forEach(function (link) {
+      link.addEventListener('click', function () {
+        localStorage.removeItem(SESSION_KEY);
+        localStorage.removeItem(USER_KEY);
+        // No e.preventDefault(): the link's own href="index.html" still
+        // does the navigation, we just clear the session first.
+      });
+    });
+  }
+  initLogout();
+
+  /* ------------------------------------------------------------------
      1. SIDEBAR MOBILE DRAWER
      ------------------------------------------------------------------ */
   function initSidebarToggle() {
@@ -195,6 +235,55 @@
   }
 
   /* ------------------------------------------------------------------
+     6. QUICK ACTIONS, REPORT TABLE "VIEW", AND RECENT SEARCH CHIPS
+     None of these had a destination before -- they're plain buttons
+     with a data-action attribute and nowhere to go. Each one routes to
+     the existing page that matches its intent; the two that involve a
+     specific company (View Report row / recent-search chip) pass it
+     along as a `?company=` query string, which company-research.js
+     now reads on load (see initDeepLinkCompany there) to pre-load that
+     company instead of the default.
+
+     BACKEND HOOK: once real report IDs exist, "View" should link to
+     /reports/:id instead of a query-string company name.
+     ------------------------------------------------------------------ */
+  function initQuickActions() {
+    var routes = {
+      'analyse': 'company-research.html',
+      'generate-report': 'ai-analysis.html',
+      'market-trends': 'company-research.html',
+      'compare': 'company-research.html'
+    };
+
+    document.querySelectorAll('.quick-action[data-action]').forEach(function (btn) {
+      var target = routes[btn.getAttribute('data-action')];
+      if (!target) return;
+      btn.addEventListener('click', function () {
+        window.location.href = target;
+      });
+    });
+  }
+
+  function initViewReportButtons() {
+    document.querySelectorAll('[data-action="view-report"]').forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        window.location.href = 'investment-report.html';
+      });
+    });
+  }
+
+  function initRecentSearchChips() {
+    document.querySelectorAll('.search-chip[data-action="open-company"]').forEach(function (chip) {
+      chip.addEventListener('click', function () {
+        var company = chip.getAttribute('data-company');
+        var url = 'company-research.html';
+        if (company) url += '?company=' + encodeURIComponent(company);
+        window.location.href = url;
+      });
+    });
+  }
+
+  /* ------------------------------------------------------------------
      INIT
      ------------------------------------------------------------------ */
   document.addEventListener('DOMContentLoaded', function () {
@@ -203,5 +292,8 @@
     initSkeletonLoading();
     initStatCounters();
     initTopbarDate();
+    initQuickActions();
+    initViewReportButtons();
+    initRecentSearchChips();
   });
 })();

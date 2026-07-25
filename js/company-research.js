@@ -340,6 +340,21 @@
   }
 
   /* ------------------------------------------------------------------
+     DEEP LINK FROM OTHER PAGES
+     dashboard.js sends users here with a `?company=Apple`-style query
+     string (from the Quick Actions, report table, and recent-search
+     chips). If present, run that search automatically on load so the
+     page doesn't just land on the default company.
+     ------------------------------------------------------------------ */
+  function initDeepLinkCompany() {
+    var params = new URLSearchParams(window.location.search);
+    var company = params.get('company');
+    if (!company) return;
+    if (searchInput) searchInput.value = company;
+    runSearch(company);
+  }
+
+  /* ------------------------------------------------------------------
      INIT
      ------------------------------------------------------------------ */
   document.addEventListener('DOMContentLoaded', function () {
@@ -348,5 +363,6 @@
     initCompanyChips();
     initActionButtons();
     initConfidenceMeterOnScroll();
+    initDeepLinkCompany();
   });
 })();

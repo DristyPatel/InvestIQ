@@ -92,6 +92,25 @@
   }
 
   /* ------------------------------------------------------------------
+     SESSION (frontend-only, no backend yet)
+     Stores a "logged in" flag plus a dummy user profile in localStorage
+     so the Dashboard and its sub-pages know a session exists, and so
+     the topbar/sidebar have a name/email to show later. auth-guard.js
+     reads the same key to decide whether to allow access to the
+     Dashboard pages or bounce back to login.
+
+     BACKEND HOOK: once Flask exists, replace this localStorage write
+     with the real session/token returned by /api/login or /api/signup.
+     ------------------------------------------------------------------ */
+  var SESSION_KEY = 'investiq_auth';
+  var USER_KEY = 'investiq_user';
+
+  function startSession(user) {
+    localStorage.setItem(SESSION_KEY, 'true');
+    localStorage.setItem(USER_KEY, JSON.stringify(user));
+  }
+
+  /* ------------------------------------------------------------------
      PASSWORD SHOW/HIDE TOGGLE
      Works on any button with a `data-toggle-password="inputId"`
      attribute -- used on login, signup, and confirm-password fields.
@@ -184,11 +203,18 @@
       // BACKEND HOOK: replace this setTimeout with a real
       // fetch('/api/login', { method: 'POST', body: ... }) call once
       // the Flask backend exists. The loading/success pattern below
-      // stays exactly the same either way.
+      // stays exactly the same either way -- only the startSession()
+      // payload would change, to whatever the real API returns.
       setLoading(submitBtn, true);
       setTimeout(function () {
         setLoading(submitBtn, false);
         showAlert(form, 'success', 'Login successful. Redirecting to your dashboard...');
+
+        startSession({ name: email.value.split('@')[0], email: email.value });
+
+        setTimeout(function () {
+          window.location.href = 'dashboard.html';
+        }, 900);
       }, 1400);
     });
   }
@@ -260,6 +286,12 @@
       setTimeout(function () {
         setLoading(submitBtn, false);
         showAlert(form, 'success', 'Account created! Redirecting to your dashboard...');
+
+        startSession({ name: name.value, email: email.value });
+
+        setTimeout(function () {
+          window.location.href = 'dashboard.html';
+        }, 900);
       }, 1400);
     });
   }
